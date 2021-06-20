@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using Twitter.Data;
 using Twitter.Models;
 
@@ -18,14 +19,15 @@ namespace Twitter.Controllers
             _db = db;
         }
 
-        public IActionResult FollowUser(int userId)
+        public IActionResult FollowUser(int id)
         {
             var loggedInUserId = (int)HttpContext.Session.GetInt32("UserId");
-            _db.Follow.Add(new FollowModel()
+            var user = new FollowModel()
             {
-                userId = userId,
+                userId = id,
                 followerId = loggedInUserId
-            });
+            };
+            _db.Follow.Add(user);
             _db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -60,9 +62,34 @@ namespace Twitter.Controllers
                 
             ViewData["Tweets"] = tweets;
             ViewData["profiles"] = profile;
-            ViewData["FollowersCount"] = _db.Users.Where(e => e.userId == profile.UserId).Single().Followers.Count();
-            ViewData["FollowingCount"] = _db.Users.Where(e => e.userId == profile.UserId).Single().Following.Count();
+            ViewData["FollowersCount"] = _db.Users.Where(e => e.userId == profile.UserId).Include(u => u.Followers).Single().Followers.Count();
+            ViewData["FollowingCount"] = _db.Users.Where(e => e.userId == profile.UserId).Include(u => u.Following).Single().Following.Count();
+            ViewData["otherUser"] = false;
             return View();
+        }
+        
+        public IActionResult UserProfile(int id)
+        {
+            var userId =  id;
+            var user = _db.Users.FirstOrDefault(u => u.userId == id);
+            var profile = _db.Profiles.FirstOrDefault(p => p.UserId == id);
+            if(profile == null && userId != null){
+                
+                var userName = user.username;
+                var userProfile = new ProfileModel(){UserId =(int)userId , ProfileName = userName};
+                _db.Add(userProfile);
+                _db.SaveChanges();
+                profile = userProfile;
+            }
+            
+            var tweets = _db.Tweets.Where(t => t.UserId == (int)userId).ToList();
+                
+            ViewData["Tweets"] = tweets;
+            ViewData["profiles"] = profile;
+            ViewData["FollowersCount"] = _db.Users.Where(e => e.userId == profile.UserId).Include(u => u.Followers).Single().Followers.Count();
+            ViewData["FollowingCount"] = _db.Users.Where(e => e.userId == profile.UserId).Include(u => u.Following).Single().Following.Count();
+            ViewData["otherUser"] = true;
+            return View("Index");
         }
         //GET - /profile/edit/id
         public IActionResult Edit(int? id)

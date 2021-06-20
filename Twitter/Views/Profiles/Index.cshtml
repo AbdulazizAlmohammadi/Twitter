@@ -5,6 +5,7 @@
     var tweets = (List<TweetModel>) ViewData["Tweets"] ;
     var followersCount = (int)ViewData["FollowersCount"];
     var followingCount = (int)ViewData["FollowingCount"];
+    var otherUser = (bool) ViewData["otherUser"];
 }
 
 <div class="card border-0 box-shadow mt-3">
@@ -14,14 +15,20 @@
                 <div class="profile-avatar"></div>
                 <div class="ml-2"><a href="#"><h4>@profile?.ProfileName</h4></a></div>
             </div>
-            <a asp-action="Edit" asp-route-id="@profile?.ProfileId" class="btn btn-primary">Edit Profile</a>
+            @if(!otherUser){
+                <a asp-action="Edit" asp-route-id="@profile?.ProfileId" class="btn btn-primary">Edit Profile</a>
+                }
+            else
+            {
+                <a asp-controller="Profiles" asp-action="FollowUser" asp-route-id="@profile.UserId" class="btn btn-primary">Follow</a>
+            }
         </div>
         <a href="#">
             <p class="ml-2 tweet">@profile?.Bio</p>
         </a>
         <div class="ml-2 w-50 d-flex justify-content-between">
-            <p><b>@followersCount</b> Followers</p>
-            <p><b>@followingCount</b> Following</p>
+            <p><b>@followingCount</b> Followers</p>
+            <p><b>@followersCount</b> Following</p>
         </div>
     </div>
 </div>

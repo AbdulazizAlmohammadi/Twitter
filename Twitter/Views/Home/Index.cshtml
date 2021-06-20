@@ -24,7 +24,7 @@
                <div class="card-body">
                    <div class="d-flex justify-content-start align-items-center">
                        <div class="avatar"></div>
-                       <div class="ml-2"><a href="#">@tweet.User.username</a></div>
+                       <div class="ml-2"><a asp-controller="Profiles" asp-action="UserProfile" asp-route-id="@tweet.User.userId">@tweet.User.username</a></div>
                    </div>
                    <a asp-action="Details">
                        <p class="ml-5 mr-5 tweet">@tweet.TweetContent</p>
