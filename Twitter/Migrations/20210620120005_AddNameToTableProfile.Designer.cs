@@ -10,8 +10,8 @@ using Twitter.Data;
 namespace Twitter.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210620100056_AddAllTables")]
-    partial class AddAllTables
+    [Migration("20210620120005_AddNameToTableProfile")]
+    partial class AddNameToTableProfile
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -53,6 +53,9 @@ namespace Twitter.Migrations
                     b.Property<int>("NumberOfTweets")
                         .HasColumnType("int");
 
+                    b.Property<string>("ProfileName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ProfilePicture")
                         .HasColumnType("nvarchar(max)");
 
@@ -74,11 +77,10 @@ namespace Twitter.Migrations
 
             modelBuilder.Entity("Twitter.Models.TweetModel", b =>
                 {
-                    b.Property<string>("TweetId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("ProfilePicture")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("TweetId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("TweetContent")
                         .HasMaxLength(280)

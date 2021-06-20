@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Twitter.Migrations
 {
-    public partial class AddAllTables : Migration
+    public partial class AddAllTableAndRelations : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -75,10 +75,10 @@ namespace Twitter.Migrations
                 name: "Tweets",
                 columns: table => new
                 {
-                    TweetId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    TweetId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     TweetContent = table.Column<string>(type: "nvarchar(280)", maxLength: 280, nullable: true),
                     TweetDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ProfilePicture = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UserId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>

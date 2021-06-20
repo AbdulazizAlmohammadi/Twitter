@@ -27,6 +27,17 @@ namespace Twitter
         {
             services.AddDbContext<ApplicationDbContext>(opt => opt.UseSqlServer("Server=.;Database=Twitter;Trusted_Connection=True;"));
             services.AddControllersWithViews();
+            services.AddMvc();
+            services.AddDistributedMemoryCache();
+
+            services.AddSession(options =>
+            {
+                options.Cookie.Name = ".AdventureWorks.Session";
+                options.IdleTimeout = TimeSpan.FromSeconds(10);
+                options.Cookie.IsEssential = true;
+            });
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,11 +54,14 @@ namespace Twitter
                 app.UseHsts();
             }
             app.UseHttpsRedirection();
+            
             app.UseStaticFiles();
 
             app.UseRouting();
 
             app.UseAuthorization();
+            app.UseSession();
+
 
             app.UseEndpoints(endpoints =>
             {

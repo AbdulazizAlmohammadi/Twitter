@@ -9,7 +9,7 @@ namespace Twitter.Models
     public class TweetModel
     {
         [Key]
-        public string TweetId { get; set; }
+        public int TweetId { get; set; }
         [MaxLength(280)]
         public string TweetContent { get; set; }
         public DateTime TweetDate { get; set; }
