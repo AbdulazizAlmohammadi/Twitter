@@ -10,7 +10,7 @@ namespace Twitter.Models
     {
         [Key]
         public int ProfileId { get; set; }
-
+        public string ProfileName { get; set; }
         public string ProfilePicture { get; set; }
         [MaxLength(160)]
         public string Bio { get; set; }
