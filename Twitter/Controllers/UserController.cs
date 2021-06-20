@@ -16,10 +16,10 @@ namespace Twitter.Controllers
         {
             _db = context;
         }
-        public IActionResult Index()
+        /*public IActionResult Index()
         {
             return View();
-        }
+        }*/
         public IActionResult Register()
         {
             return View();
@@ -54,25 +54,24 @@ namespace Twitter.Controllers
 
             if (targetUser == null) {
 
-                return View("login");}
-            else 
-            {
-                if (targetUser.userEmail == userData.userEmail && targetUser.password == userData.password)
-                {
-                    HttpContext.Session.SetString ("UserEmail",targetUser.userEmail);
-                    HttpContext.Session.SetString("UserName", targetUser.username);
-                    HttpContext.Session.SetInt32("UserId",targetUser.userId);
-                    
-                    return View("Index");
-
-                }
-                else
-                {
-                    ViewBag.Message = "Incorrect Password/Email";
-                    return BadRequest();
-
-                }
+                return View("login");
+                
             }
+            else if (targetUser.userEmail == userData.userEmail && targetUser.password == userData.password)
+            {
+                HttpContext.Session.SetString ("UserEmail",targetUser.userEmail);
+                HttpContext.Session.SetString("UserName", targetUser.username);
+                HttpContext.Session.SetInt32("UserId",targetUser.userId);
+                    
+                return RedirectToAction("Index" , "Home");
+
+            } else
+            {
+                ViewBag.Message = "Incorrect Password/Email";
+                return BadRequest();
+
+            }
+            
             
         }
         [HttpGet]

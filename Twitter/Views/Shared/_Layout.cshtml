@@ -46,7 +46,7 @@
                                 <li class="nav-item"><a class="nav-link d-flex align-items-center" id="profile" asp-controller="Home" asp-action="Profile"> <i class="material-icons mr-2">perm_identity</i>Profile</a></li>
                                 <li class="nav-item"><a class="nav-link d-flex align-items-center" id="notification" href="#"> <i class="material-icons mr-2">notifications_none</i>Notifications</a></li>
                                 <li class="nav-item"><a class="nav-link d-flex align-items-center" id="bookmark" href="#"> <i class="material-icons mr-2">bookmark_border</i>Bookmark</a></li>
-                                <li class="nav-item"><a class="nav-link d-flex align-items-center" id="more" href="#"> <i class="material-icons mr-2">more_horiz</i>More</a></li>
+                                <li class="nav-item"><a class="nav-link d-flex align-items-center" id="more" asp-controller="User" asp-action="Logout"> <i class="material-icons mr-2">exit_to_app</i>Logout</a></li>
                             </ul>
                         </div>
                     </div>
@@ -69,7 +69,7 @@
 
     <footer class=" footer text-muted">
         <div class="container">
-            &copy; 2021 - Twitter - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2021 - Twitter 
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

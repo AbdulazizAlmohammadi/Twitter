@@ -11,7 +11,7 @@ namespace Twitter.Controllers
     public class TweetsController : Controller
     {
         // GET: /<controller>/
-        public IActionResult Index()
+        /*public IActionResult Index()
         {
             //ViewData["Tweets"] = applicationDbContext.FavoriteDrops.ToList();
             return View();
@@ -20,6 +20,6 @@ namespace Twitter.Controllers
         {
             //ViewData["Tweets"] = applicationDbContext.FavoriteDrops.ToList();
             return View();
-        }
+        }*/
     }
 }

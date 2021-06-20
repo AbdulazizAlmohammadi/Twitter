@@ -8,9 +8,9 @@ namespace Twitter.Controllers
 {
     public class TweetController : Controller
     {
-        public IActionResult Index()
+        /*public IActionResult Index()
         {
             return View();
-        }
+        }*/
     }
 }
