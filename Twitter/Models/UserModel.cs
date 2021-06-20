@@ -17,6 +17,7 @@ namespace Twitter.Models
         [Required]
         public string password { get; set; }
 
+        public ProfileModel Profile { get; set; }
 
         public ICollection<UserModel> Followers { get; set; }
         public List<FollowModel> UserFollowers { get; set; }

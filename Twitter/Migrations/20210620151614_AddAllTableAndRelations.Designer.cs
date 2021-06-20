@@ -10,7 +10,7 @@ using Twitter.Data;
 namespace Twitter.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210620115107_AddAllTableAndRelations")]
+    [Migration("20210620151614_AddAllTableAndRelations")]
     partial class AddAllTableAndRelations
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -47,11 +47,14 @@ namespace Twitter.Migrations
                         .HasMaxLength(160)
                         .HasColumnType("nvarchar(160)");
 
-                    b.Property<DateTime>("DateOfJoin")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("DateOfJoin")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("NumberOfTweets")
                         .HasColumnType("int");
+
+                    b.Property<string>("ProfileName")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ProfilePicture")
                         .HasColumnType("nvarchar(max)");
@@ -67,7 +70,8 @@ namespace Twitter.Migrations
 
                     b.HasKey("ProfileId");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("UserId")
+                        .IsUnique();
 
                     b.ToTable("Profiles");
                 });
@@ -142,8 +146,8 @@ namespace Twitter.Migrations
             modelBuilder.Entity("Twitter.Models.ProfileModel", b =>
                 {
                     b.HasOne("Twitter.Models.UserModel", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
+                        .WithOne("Profile")
+                        .HasForeignKey("Twitter.Models.ProfileModel", "UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -163,6 +167,8 @@ namespace Twitter.Migrations
 
             modelBuilder.Entity("Twitter.Models.UserModel", b =>
                 {
+                    b.Navigation("Profile");
+
                     b.Navigation("UserFollowers");
 
                     b.Navigation("UserFollowing");
