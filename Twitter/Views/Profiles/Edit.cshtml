@@ -1,4 +1,4 @@
-﻿@model UserModel
+﻿@model ProfileModel
 @{
     Layout = null;
 }
@@ -12,28 +12,22 @@
     <div class="card border-0 box-shadow  p-4 text-center">
         <div class="card-body">
             <h3>Login</h3>
-            <form class="mt-5" asp-action="LoginVerification">
+            <form class="mt-5" asp-action="Edit">
                 <div class="mb-3">
                     <div class="input-container">
-                        <input type="text" required="" asp-for="userEmail"/>
-                        <label>Email</label>
+                        <input type="text" required="" asp-for="ProfileName"/>
+                        <label>Name</label>
                     </div>
                 </div>
                 <div class="mb-3">
                     <div class="input-container">
-                        <input type="password" required="" asp-for="password" />
-                        <label>Password</label>
+                        <input type="text" required="" asp-for="Bio" />
+                        <label>Bio</label>
                     </div>
                 </div>
-                <div class="mb-3 form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                </div>
-                <button type="submit" class="btn btn-primary">Login</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
 
             </form>
-            
-            <a asp-action="Register">or regiser</a>
         </div>
     </div>
 </div>

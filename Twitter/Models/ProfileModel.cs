@@ -17,7 +17,7 @@ namespace Twitter.Models
         public int TotalFollowers { get; set; }
         public int TotalFollowing { get; set; }
         public int NumberOfTweets { get; set; }
-        public string  DateOfJoin { get; set; }
+        public DateTime  DateOfJoin { get; set; }
 
         public int UserId { get; set; }
         public UserModel User { get; set; }

@@ -29,7 +29,6 @@ namespace Twitter.Controllers
         {
             var user = new UserModel()
             {
-                userId= NewUser.userId,
                 userEmail= NewUser.userEmail,
                 username= NewUser.username,
                 password= NewUser.password
@@ -37,7 +36,15 @@ namespace Twitter.Controllers
             _db.Add(user);
             _db.SaveChanges(); 
             
-            return View();
+            var profile = new ProfileModel(){UserId = user.userId , ProfileName = user.username};
+            _db.Add(profile);
+            _db.SaveChanges();
+            
+            HttpContext.Session.SetString ("UserEmail",user.userEmail);
+            HttpContext.Session.SetString("UserName", user.username);
+            HttpContext.Session.SetInt32("UserId",user.userId);
+                    
+            return RedirectToAction("Index" , "Home");
         }
 
         [HttpGet]

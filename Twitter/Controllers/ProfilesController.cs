@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Twitter.Data;
 using Twitter.Models;
 
@@ -19,8 +20,21 @@ namespace Twitter.Controllers
 
         public IActionResult Index()
         {
-            var profiles = _db.Profiles.ToList();
-            ViewData["profiles"] = profiles;
+            var userId =  HttpContext.Session.GetInt32("UserId");
+            var profile = _db.Profiles.FirstOrDefault(p => p.UserId == HttpContext.Session.GetInt32("UserId"));
+            if(profile == null && userId != null){
+                
+                var userName = HttpContext.Session.GetString("UserName");
+                var userProfile = new ProfileModel(){UserId =(int)userId , ProfileName = userName};
+                _db.Add(userProfile);
+                _db.SaveChanges();
+                profile = userProfile;
+            }
+            
+            var tweets = _db.Tweets.Where(t => t.UserId == (int)userId).ToList();
+                
+            ViewData["Tweets"] = tweets;
+            ViewData["profiles"] = profile;
             return View();
         }
         //GET - /profile/edit/id
@@ -28,10 +42,10 @@ namespace Twitter.Controllers
         {
             // ViewData["ProfileId"] = id;
             var profile = _db.Profiles.ToList().Find(b => b.ProfileId == id);
-            if (id == null || profile == null)
+            /*if (id == null || profile == null)
             {
                 return View("_NotFound");
-            }
+            }*/
             ViewData["profile"] = profile;
             return View();
         }

@@ -1,6 +1,8 @@
 ﻿
 @{
     ViewData["Title"] = "Profile";
+    var profile = (ProfileModel) ViewData["profiles"];
+    var tweets = (List<TweetModel>) ViewData["Tweets"] ;
 }
 
 <div class="card border-0 box-shadow mt-3">
@@ -8,12 +10,12 @@
         <div class="d-flex justify-content-between align-items-start">
             <div class="">
                 <div class="profile-avatar"></div>
-                <div class="ml-2"><a href="#"><h4>Rawabe</h4></a></div>
+                <div class="ml-2"><a href="#"><h4>@profile?.ProfileName</h4></a></div>
             </div>
-            <a href="#" class="btn btn-primary">Edit Profile</a>
+            <a asp-action="Edit" asp-route-id="@profile?.ProfileId" class="btn btn-primary">Edit Profile</a>
         </div>
         <a href="#">
-            <p class="ml-2 tweet">Hello! this is my first tweet</p>
+            <p class="ml-2 tweet">@profile?.Bio</p>
         </a>
         <div class="ml-2 w-50 d-flex justify-content-between">
             <p><b>20</b> Followers</p>
@@ -21,36 +23,27 @@
         </div>
     </div>
 </div>
+
+
 <div class="card border-0 box-shadow mt-3">
     <div class="card-body">
-        <div class="d-flex justify-content-start align-items-center">
-            <div class="avatar"></div>
-            <div class="ml-2"><a href="#">Rawabe</a></div>
-        </div>
-        <a href="#">
-            <p class="ml-5 mr-5 tweet">Hello! this is my first tweet</p>
-        </a>
-        <div class="d-flex justify-content-around align-items-center pt-2 pb-2">
-            <i class="material-icons tweet-icon">chat_bubble_outline</i>
-            <i class="material-icons tweet-icon">autorenew</i>
-            <i class="material-icons tweet-icon">favorite_border</i>
-            <i class="material-icons tweet-icon">share</i>
-        </div>
-
-        <hr/>
-        <div class="d-flex justify-content-start align-items-center">
-            <div class="avatar"></div>
-            <div class="ml-2"><a href="#">Rawabe</a></div>
-        </div>
-        <a href="#">
-            <p class="ml-5 mr-5 tweet">Hello! this is my first tweet</p>
-        </a>
-        <div class="d-flex justify-content-around align-items-center pt-2 pb-2">
-            <i class="material-icons tweet-icon">chat_bubble_outline</i>
-            <i class="material-icons tweet-icon">autorenew</i>
-            <i class="material-icons tweet-icon">favorite_border</i>
-            <i class="material-icons tweet-icon">share</i>
-        </div>
-
+        @foreach (var tweet in tweets)
+               {
+                   
+                           <div class="d-flex justify-content-start align-items-center">
+                               <div class="avatar"></div>
+                               <div class="ml-2"><a href="#">@profile.ProfileName</a></div>
+                           </div>
+                           
+                               <p class="ml-5 mr-5 tweet">@tweet.TweetContent</p>
+                         
+                           <div class="d-flex justify-content-around align-items-center pt-2 pb-2">
+                               <i class="material-icons tweet-icon">chat_bubble_outline</i>
+                               <i class="material-icons tweet-icon">autorenew</i>
+                               <i class="material-icons tweet-icon">favorite_border</i>
+                               <i class="material-icons tweet-icon">share</i>
+                           </div>
+                        <hr/>
+               }
     </div>
 </div>

@@ -72,13 +72,5 @@ namespace Twitter.Controllers
             //return View(product);
         }
         
-        public IActionResult Profile(){
-            var user = _context.Users.Include(e=>e.Followers).FirstOrDefault();
-            if(user != null)
-                {
-                    ViewBag.FollowersCount = user.Followers.Count();
-                    }
-            return View();
-            }
     }
 }
