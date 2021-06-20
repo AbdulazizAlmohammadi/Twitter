@@ -25,7 +25,7 @@ namespace Twitter
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ApplicationDbContext>(opt => opt.UseSqlServer("Server=.;Database=Twitter;Trusted_Connection=True;"));
+            services.AddDbContext<ApplicationDbContext>(opt => opt.UseSqlServer("Server=DESKTOP-T3863TG\\SQLEXPRESS;Database=Twitter;Trusted_Connection=True;"));
             services.AddControllersWithViews();
             services.AddMvc();
             services.AddDistributedMemoryCache();

@@ -3,6 +3,8 @@
     ViewData["Title"] = "Profile";
     var profile = (ProfileModel) ViewData["profiles"];
     var tweets = (List<TweetModel>) ViewData["Tweets"] ;
+    var followersCount = (int)ViewData["FollowersCount"];
+    var followingCount = (int)ViewData["FollowingCount"];
 }
 
 <div class="card border-0 box-shadow mt-3">
@@ -18,8 +20,8 @@
             <p class="ml-2 tweet">@profile?.Bio</p>
         </a>
         <div class="ml-2 w-50 d-flex justify-content-between">
-            <p><b>20</b> Followers</p>
-            <p><b>34</b> Following</p>
+            <p><b>@followersCount</b> Followers</p>
+            <p><b>@followingCount</b> Following</p>
         </div>
     </div>
 </div>
