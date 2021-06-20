@@ -1,0 +1,118 @@
+﻿body {
+}
+
+.card {
+    border-radius: 20px;
+}
+
+.nav-pills .nav-link.active {
+    background: #4f34ff;
+    border-radius:20px
+}
+a {
+    color: #808080
+}
+    a:hover {
+        color: #4f34ff;
+        text-decoration : none
+        
+    }
+
+.avatar {
+    width: 50px;
+    height: 50px;
+    background: #4f34ff;
+    border-radius : 50px
+}
+
+.profile-avatar {
+    width: 80px;
+    height: 80px;
+    background: #4f34ff;
+    border-radius: 50px;
+}
+
+.btn-primary {
+    background: #4f34ff;
+    color: white;
+    border-radius: 20px
+}
+.btn-primary:hover {
+    background: #6248ff;
+    color: white;
+}
+.tweet-icon {
+    color: #808080;
+}
+
+.tweet{
+    color:#343434
+}
+
+/**Login form**/
+
+
+.input-container {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+    .input-container label {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        font-size: 16px;
+        color: black;
+        pointer-event: none;
+        transition: all 0.2s ease-in-out;
+    }
+
+    .input-container input {
+        border: 0;
+        border-bottom: 1px solid #efefef;
+        background: transparent;
+        width: 100%;
+        padding: 8px 0 5px 0;
+        font-size: 16px;
+        color: black;
+    }
+
+        .input-container input:focus {
+            border: none;
+            outline: none;
+            border-bottom: 1px solid #4f34ff;
+        }
+
+
+.input-container input:focus ~ label,
+.input-container input:valid ~ label {
+    top: -12px;
+    font-size: 12px;
+}
+
+.comment-input {
+    border: 0;
+    border-radius: 20px;
+    caret-color: #4f34ff;
+}
+.tweet-area {
+    border: 0.5px solid #e1e1e1;
+    border-radius: 20px;
+    caret-color: #4f34ff;
+    background-color: #f9f8f8;
+    padding:5px;
+    box-sizing : border-box;
+    resize: none;
+}
+
+    .tweet-area:focus {
+        outline: none;
+        padding: 5px;
+    }
+
+input:focus{
+    outline :none; 
+}
+.send-comment {
+    color: #4f34ff !important;
+}
