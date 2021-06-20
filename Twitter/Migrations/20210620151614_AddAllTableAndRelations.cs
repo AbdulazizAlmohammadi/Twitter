@@ -52,12 +52,13 @@ namespace Twitter.Migrations
                 {
                     ProfileId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    ProfileName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ProfilePicture = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Bio = table.Column<string>(type: "nvarchar(160)", maxLength: 160, nullable: true),
                     TotalFollowers = table.Column<int>(type: "int", nullable: false),
                     TotalFollowing = table.Column<int>(type: "int", nullable: false),
                     NumberOfTweets = table.Column<int>(type: "int", nullable: false),
-                    DateOfJoin = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DateOfJoin = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UserId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -100,7 +101,8 @@ namespace Twitter.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Profiles_UserId",
                 table: "Profiles",
-                column: "UserId");
+                column: "UserId",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Tweets_UserId",
