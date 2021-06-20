@@ -1,9 +1,8 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Twitter.Migrations
 {
-    public partial class SeedingUserAndTweetAndProfileTables : Migration
+    public partial class SeedingDataToDB : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -27,9 +26,9 @@ namespace Twitter.Migrations
                 columns: new[] { "ProfileId", "Bio", "DateOfJoin", "NumberOfTweets", "ProfileName", "ProfilePicture", "TotalFollowers", "TotalFollowing", "UserId" },
                 values: new object[,]
                 {
-                    { 1, "Hardcore coffeeaholic. Thinker. Twitter maven. Problem solver. Evil travel lover.", new DateTime(2015, 9, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 31, "Nada", "https://i.pinimg.com/originals/0a/53/c3/0a53c3bbe2f56a1ddac34ea04a26be98.jpg", 34, 434, 1 },
-                    { 2, "Pop culture evangelist. Devoted internet nerd. Tv fanatic. Web maven. Typical travel aficionado. Thinker.", new DateTime(2011, 3, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), 752, "I love cats", "https://i.redd.it/v0caqchbtn741.jpg", 1000, 234, 2 },
-                    { 3, "Wannabe bacon geek. Social media evangelist. Web maven. Twitter scholar. ", new DateTime(2017, 7, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), 435, "Taif", "https://i.pinimg.com/originals/bc/b8/36/bcb83616190f26847422d44363434400.jpg", 200, 4534, 3 }
+                    { 1, "Hardcore coffeeaholic. Thinker. Twitter maven. Problem solver. Evil travel lover.", "2005-09-05", 31, "Nada", "https://i.pinimg.com/originals/0a/53/c3/0a53c3bbe2f56a1ddac34ea04a26be98.jpg", 34, 434, 1 },
+                    { 2, "Pop culture evangelist. Devoted internet nerd. Tv fanatic. Web maven. Typical travel aficionado. Thinker.", "2005-10-10", 752, "I love cats", "https://i.redd.it/v0caqchbtn741.jpg", 1000, 234, 2 },
+                    { 3, "Wannabe bacon geek. Social media evangelist. Web maven. Twitter scholar. ", "2005-08-01", 435, "Taif", "https://i.pinimg.com/originals/bc/b8/36/bcb83616190f26847422d44363434400.jpg", 200, 4534, 3 }
                 });
 
             migrationBuilder.InsertData(
@@ -37,9 +36,9 @@ namespace Twitter.Migrations
                 columns: new[] { "TweetId", "TweetContent", "TweetDate", "UserId" },
                 values: new object[,]
                 {
-                    { 1, "Hi I am new member here", new DateTime(2005, 9, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 1 },
-                    { 2, "I like MVC and c#", new DateTime(2019, 9, 9, 0, 0, 0, 0, DateTimeKind.Unspecified), 2 },
-                    { 3, "Do you want to learn more about FrontEnd?", new DateTime(2010, 9, 7, 0, 0, 0, 0, DateTimeKind.Unspecified), 3 }
+                    { 1, "Hi I am new member here", "2005-09-01", 1 },
+                    { 2, "I like MVC and c#", "2018-08-01", 2 },
+                    { 3, "Do you want to learn more about FrontEnd?", "2012-12-01", 3 }
                 });
         }
 

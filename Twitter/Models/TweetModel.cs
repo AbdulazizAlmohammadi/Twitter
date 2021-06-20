@@ -12,7 +12,7 @@ namespace Twitter.Models
         public int TweetId { get; set; }
         [MaxLength(280)]
         public string TweetContent { get; set; }
-        public DateTime TweetDate { get; set; }
+        public string  TweetDate { get; set; }
         public int UserId { get; set; }
         public UserModel User { get; set; }
 
