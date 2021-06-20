@@ -18,6 +18,31 @@ namespace Twitter.Controllers
             _db = db;
         }
 
+        public IActionResult FollowUser(int userId)
+        {
+            var loggedInUserId = (int)HttpContext.Session.GetInt32("UserId");
+            _db.Follow.Add(new FollowModel()
+            {
+                userId = userId,
+                followerId = loggedInUserId
+            });
+            _db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult UnfollowUser(int userId)
+        {
+            var loggedInUserId = (int)HttpContext.Session.GetInt32("UserId");
+            var follow = _db.Follow.Where(e => e.userId == userId).Where(e => e.followerId == loggedInUserId).FirstOrDefault();
+
+            if(follow != null)
+            {
+                _db.Follow.Remove(follow);
+                _db.SaveChanges();
+            }
+            return RedirectToAction("Index");
+        }
+
         public IActionResult Index()
         {
             var userId =  HttpContext.Session.GetInt32("UserId");
@@ -35,6 +60,8 @@ namespace Twitter.Controllers
                 
             ViewData["Tweets"] = tweets;
             ViewData["profiles"] = profile;
+            ViewData["FollowersCount"] = _db.Users.Where(e => e.userId == profile.UserId).Single().Followers.Count();
+            ViewData["FollowingCount"] = _db.Users.Where(e => e.userId == profile.UserId).Single().Following.Count();
             return View();
         }
         //GET - /profile/edit/id
