@@ -8,11 +8,11 @@
         <h3>Home</h3>
         <div class="card border-0 box-shadow ">
             <div class="card-body">
-                <div class="">
+                <div class="text-center">
                     <div class="avatar"></div>
-                    <form asp-action="Create" method="post">
-                        <textarea asp-for="TweetContent" class="ml-2 tweet-area p-3" placeholder="What's happening?" maxlength="140" rows="4" cols="50"></textarea>
-                        <input type="submit" class="btn btn-primary" value="Tweet">
+                    <form asp-action="Create" method="post" class="d-flex flex-column justify-content-center align-items-end">
+                        <textarea asp-for="TweetContent" class="ml-2 tweet-area p-3" placeholder="What's happening?" maxlength="140" rows="4" cols="45"></textarea>
+                        <input type="submit" class="mt-2 btn btn-primary" value="Tweet">
                     </form>
                 </div>
                 @* <div class="d-flex justify-content-end mt-3"><a class="btn btn-primary" href="#">Tweet</a></div> *@
