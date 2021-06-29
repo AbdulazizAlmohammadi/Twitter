@@ -107,7 +107,7 @@ profile, viewing followings' profiles and their messages.
 
 - [ Sara Alnasser ](https://www.linkedin.com/in/sara-abdulmajeed-alnasser/) - Sara.Abdulmajeed.4@gmail.com
 
-- [ Nada AlOtaibi ](https://github.com/NadaAlOtaibi) - nada.majed.alotaibi@gmail.com
+- [ Nada AlOtaibi ](https://www.linkedin.com/in/nada-al-otaibi-313739164) - nada.majed.alotaibi@gmail.com
 
 - [ Fahad Alkhayyal ](http://linkedin.com/in/fhddev) 
 
