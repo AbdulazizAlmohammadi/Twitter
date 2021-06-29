@@ -95,7 +95,7 @@ profile, viewing followings' profiles and their messages.
 
  - [Abdulaziz Almohammadi](https://www.linkedin.com/in/abdulazizalmohammadi/) - AbdulazizSa97@hotmail.com 
 
- - [Ahmed Almutairi](www.linkedin.com/in/ahmed-almuatiri3x) - Ahmedfahad3x@gmail.com
+ - [Ahmed Almutairi](https://www.linkedin.com/in/ahmed-almuatiri3x) - Ahmedfahad3x@gmail.com
 
  - [Rawabe Ebrahim](https://www.linkedin.com/in/rawabe-ebrahim-68775716b/) -  rawabe44u@gmail.com
 
